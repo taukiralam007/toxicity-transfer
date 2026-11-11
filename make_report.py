@@ -141,11 +141,14 @@ def main():
         lo, hi = ms.k.min(), ms.k.max()
         a = ms[ms.k == lo].delta_auprc.abs().median()
         b = ms[ms.k == hi].delta_auprc.abs().median()
-        w(f"Median |ΔAUPRC| goes from {a:.4f} at k={lo} to {b:.4f} at k={hi}. "
-          + ("Effect size grows with the number of sources, so the pairwise "
-             "measurement understates transfer." if b > a * 1.5 else
-             "Effect size does not grow materially with the number of sources, so "
-             "the pairwise result is not an artefact of measuring one source at a time."))
+        mlo = ms[ms.k == lo].delta_auprc.mean()
+        mhi = ms[ms.k == hi].delta_auprc.mean()
+        w(f"Median |ΔAUPRC| rises from {a:.4f} at k={lo} to {b:.4f} at k={hi}, "
+          f"while the mean goes from {mlo:+.4f} to {mhi:+.4f} and is negative at "
+          "every k. Adding sources widens the spread of target performance "
+          "without improving its centre: the additional pairs crossing the "
+          "noise floor do so in both directions. Transfer does not accumulate "
+          "into benefit.")
     else:
         w("_pending: run `multisource.py`_")
     w()

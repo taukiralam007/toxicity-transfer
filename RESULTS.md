@@ -75,7 +75,7 @@ A 2026 analysis of gradient-based task affinity placed the usable floor near 30-
 | 20 | 36 | 0.0087 | -0.0084 | 16.67 |
 | 50 | 36 | 0.0106 | -0.0025 | 30.56 |
 
-Median |ΔAUPRC| goes from 0.0050 at k=1 to 0.0106 at k=50. Effect size grows with the number of sources, so the pairwise measurement understates transfer.
+Median |ΔAUPRC| rises from 0.0050 at k=1 to 0.0106 at k=50, while the mean goes from -0.0017 to -0.0025 and is negative at every k. Adding sources widens the spread of target performance without improving its centre: the additional pairs crossing the noise floor do so in both directions. Transfer does not accumulate into benefit.
 
 ## If selection cannot be predicted, can it be screened?
 
