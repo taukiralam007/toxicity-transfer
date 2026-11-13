@@ -23,23 +23,12 @@ warnings.filterwarnings("ignore")
 OUT = "figures"
 os.makedirs(OUT, exist_ok=True)
 
-plt.rcParams.update({
-    "figure.dpi": 150,
-    "savefig.dpi": 300,
-    "font.size": 9,
-    "axes.titlesize": 10,
-    "axes.labelsize": 9,
-    "axes.spines.top": False,
-    "axes.spines.right": False,
-    "legend.frameon": False,
-    "figure.autolayout": True,
-})
+# Style lives in figstyle.py so every figure in the paper matches the
+# pipeline figure: same typeface, same greys, same line weights, greyscale
+# first. Importing it sets rcParams.
+from figstyle import INK, LINE, FILL, POS, NEG, ACC   # noqa: E402
 
-INK = "#1b1b1b"
-POS = "#2f6f4e"
-NEG = "#9c3b3b"
-MID = "#8a8a8a"
-ACC = "#30598c"
+MID = FILL
 
 
 # ---------------------------------------------------------------- discovery
